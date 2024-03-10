@@ -2,7 +2,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cc       = gcc
 CLANG      = clang ${TOOLCHAIN_wasm64} -lwasi-emulated-process-clocks -D_WASI_EMULATED_PROCESS_CLOCKS
-SUFFIX     = -nomtg
+SUFFIX     = -nomtg.wasm
 runtime  = 1.0
 dtype    = double
 
