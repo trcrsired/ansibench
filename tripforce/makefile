@@ -2,7 +2,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cc      = gcc
 search  = 'ansi' 
-mp      = -fopenmp 
+mp      = 
  
 ##############################################################################
 # DO NOT MODIFY BEYOND THIS POINT                                            #
@@ -16,7 +16,7 @@ BINDIR = ./bin
 OUT    = $(BINDIR)/tripforce
 INPUT  = ./src/tripforce.c
 # ----------------------------------------------------------------------------
-CARGS  += $(INPUT) -o$(OUT) $(OPTLEVEL) $(CFLAGS) $(XCFLAGS)
+CARGS  += $(INPUT) -o$(OUT) $(OPTLEVEL) $(CFLAGS) $(XCFLAGS) -DDIS_OPENMP
 # ----------------------------------------------------------------------------
 all: bin 
 run: all
