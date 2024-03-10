@@ -1,0 +1,34 @@
+# DEFAULT BENCHMARK CONFIGURATION
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc = gcc
+CLANG      = clang ${TOOLCHAIN_wasm64} -fsanitize=memtag -lwasi-emulated-process-clocks -D_WASI_EMULATED_PROCESS_CLOCKS
+SUFFIX     = -mtg.wasm
+n  = 1000000
+ 
+##############################################################################
+# DO NOT MODIFY BEYOND THIS POINT                                            #
+##############################################################################
+-include ../mk/$(cc)/stdflags.mk
+-include ../mk/$(cc)/opt/$(opt).mk
+-include ../mk/$(cc)/xflags/$(xflags).mk
+-include ../mk/$(cc)/whetstone/stdflags.mk
+# ----------------------------------------------------------------------------
+BINDIR = ./bin
+OUT    = $(BINDIR)/whetstone
+INPUT  = ./src/whetstone.c
+# ----------------------------------------------------------------------------
+CARGS  += -o$(OUT)${SUFFIX} $(OPTLEVEL) $(CFLAGS) $(XCFLAGS) $(INPUT)
+# ----------------------------------------------------------------------------
+all: bin 
+run: all
+	@date
+	@echo "Running Whetstone..." 
+	@$(OUT) $(n)
+dirs:
+	@mkdir -p $(BINDIR)
+bin: dirs
+	$(CLANG) $(CARGS) 
+clean:
+	@-rm -f $(OUT) core a.out *.o
+	@-rm -f $(BINDIR)/*
+	@-rmdir $(BINDIR)
