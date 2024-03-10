@@ -3,7 +3,7 @@
 cc = gcc
 CLANG      = clang ${TOOLCHAIN_wasm64} -fsanitize=memtag -lwasi-emulated-process-clocks -D_WASI_EMULATED_PROCESS_CLOCKS -DDIS_OPENMP
 SUFFIX     = -mtg.wasm
-n  = 10000000
+n  = 100000000
 mp =
  
 ##############################################################################
