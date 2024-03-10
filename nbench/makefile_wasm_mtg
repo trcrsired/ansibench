@@ -27,7 +27,7 @@ run: all
 dirs:
 	@mkdir -p $(BINDIR)
 bin: dirs
-	$(CC) $(CARGS) 
+	$(CLANG) $(CARGS) 
 clean:
 	@-rm -f $(OUT) core a.out *.o
 	@-rm -f $(BINDIR)/*
