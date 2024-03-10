@@ -24,7 +24,7 @@ DATADIR = ./data
 # ----------------------------------------------------------------------------
 all: char short int float double ldouble 
 run: $(dtype)
-	@$(OUT)-$(dtype) 
+	@wavm run --enable memory64 --mount-root . $(OUT)-$(dtype)${SUFFIX}.wasm 
 dirs:
 	@mkdir -p $(BINDIR)
 	@mkdir -p $(DATADIR)
